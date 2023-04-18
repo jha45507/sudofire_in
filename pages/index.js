@@ -123,7 +123,7 @@ export default function Home() {
           <div className='absolute w-full h-[1px] right-0 bottom-0 bg-gray-700'></div>
         </nav>
         <div className='w-[550px] pt-[300px] ml-[100px]'>
-          <h1 className='text-[26px] font-bold leading-none'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE ‘STARTUP INDIA ACTION PLAN’</h1>
+          <h1 className='text-[26px] font-bold leading-none'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE &apos;STARTUP INDIA ACTION PLAN&apos;</h1>
           <p className='text-[22px] font-light mt-3'>Our services are a perfect mix of creativity commitment and some serious programming. Let your online presence be worthwhile!</p>
         </div>
         <div className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10'>
