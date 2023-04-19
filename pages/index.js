@@ -48,8 +48,8 @@ import { IoMdMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 
-import  React from 'react';
-import { forwardRef, useEffect, useState, useRef } from 'react';
+import { forwardRef, useEffect, useState, createRef} from 'react';
+import React from 'react';
 
 export default function Home() {
   const [navColor, setNavColor] = useState({ color: '#FFFFFF', })
@@ -167,22 +167,23 @@ export default function Home() {
     });
   }, [])
 
-  const ham = React.forwardRef()
-  const cross = React.forwardRef()
 
-  const hamClick = () => {
+  const ham = createRef()
+  const cross = createRef()
+
+  const hamClick = React.forwardRef( (props, ham) => {
     if (ham.current.classList.contains('hamBar')) {
       cross.current.classList.replace('hidden', 'show')
       ham.current.classList.add('hidden')
     }
-  }
+  })
 
-  const crossClick = () => {
+  const crossClick = React.forwardRef( (props, cross) => {
     if (ham.current.classList.contains('hamBar')) {
       ham.current.classList.replace('hidden', 'show')
       cross.current.classList.add('hidden')
     }
-  }
+  })
 
   return (
     <div className='relative h-full w-full'>
@@ -204,7 +205,7 @@ export default function Home() {
           <div className='logo_div hidden lg:block'>
             {log}
           </div>
-          <ul className='flex items-center lg:space-x-12 mt-[200px] lg:mt-0px space-x-0 text-sm font-bold lg:flex-row flex-col w-full lg:w-auto'>
+          <ul className='flex items-center lg:space-x-12 lg:mt-0 mt-[200px]  space-x-0 text-sm font-bold lg:flex-row flex-col w-full lg:w-auto'>
             <li><a className='navbarLink-line' style={navColor} href="">OUR SERVICES</a></li>
             <li><a className='navbarLink-line' style={navColor} href="">OUR WORK</a></li>
             <li><a className='navbarLink-line' style={navColor} href="">TESTIMONIALS</a></li>
@@ -453,10 +454,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className='py-5 bg-black mb-16 lg:mb-0'>
+      <div className='py-5 bg-black lg:mb-0 mb-16'>
         <p className='text-gray-500 text-center'>© 2020-2021 <span className='text-red-400'>Sudofire Technologies LLP</span> . All Rights Reserved</p>
       </div>
-      <div className="sticky-nav-wrapper">
+      <div className="sticky-nav-wrapper lg:hidden">
         <ul className="sticky-nav">
           <li className='flex flex-col items-center'><a href="tel:+919811406941"><ImPhone className='fa fa-phone animated' /><span>Call Now</span></a></li>
           <li className='flex flex-col items-center'><a href="#contacts"><IoMdMail className='fa' /><span>Drop an Enquiry</span></a></li>
