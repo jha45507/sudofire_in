@@ -48,7 +48,7 @@ import { IoMdMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
 
-import { forwardRef, useEffect, useState, createRef} from 'react';
+import { forwardRef, useEffect, useState, createRef } from 'react';
 import React from 'react';
 
 export default function Home() {
@@ -97,6 +97,23 @@ export default function Home() {
 
   //     alert("Saved your information")
   // }
+
+  // const ham = createRef()
+  // const cross = createRef()
+
+  // const hamClick = React.forwardRef((props, ham) => {
+  //   if (ham.current.classList.contains('hamBar')) {
+  //     cross.current.classList.replace('hidden', 'show')
+  //     ham.current.classList.add('hidden')
+  //   }
+  // })
+
+  // const crossClick = React.forwardRef((props, cross) => {
+  //   if (ham.current.classList.contains('hamBar')) {
+  //     ham.current.classList.replace('hidden', 'show')
+  //     cross.current.classList.add('hidden')
+  //   }
+  // })
 
   useEffect(() => {
     let x = window.matchMedia("(max-width: 768px)")
@@ -208,24 +225,6 @@ export default function Home() {
     });
   }, [])
 
-
-  const ham = createRef()
-  const cross = createRef()
-
-  const hamClick = React.forwardRef( (props, ham) => {
-    if (ham.current.classList.contains('hamBar')) {
-      cross.current.classList.replace('hidden', 'show')
-      ham.current.classList.add('hidden')
-    }
-  })
-
-  const crossClick = React.forwardRef( (props, cross) => {
-    if (ham.current.classList.contains('hamBar')) {
-      ham.current.classList.replace('hidden', 'show')
-      cross.current.classList.add('hidden')
-    }
-  })
-
   return (
     <div className='relative h-full w-full'>
       <header className='' style={styling}>
@@ -260,11 +259,13 @@ export default function Home() {
         </div>
         <div className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
           <div className='space-y-2'>
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
-            <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
-            <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+            <form action="">
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
+              <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
+              <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+            </form>
           </div>
         </div>
       </header>
@@ -487,11 +488,13 @@ export default function Home() {
       <div className='bg-red-500 w-full pb-7 lg:hidden block'>
         <div className='w-[90%] contactBox bg-black p-7 m-auto'>
           <div className='space-y-2'>
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
-            <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
-            <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+            <form action="">
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
+              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
+              <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
+              <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+            </form>
           </div>
         </div>
       </div>
