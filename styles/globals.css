@@ -48,7 +48,7 @@ body {
   height: 2px;
   left: 50%;
   position: absolute;
-  background:#ef4444;
+  background: #ef4444;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -149,4 +149,105 @@ body {
   -ms-transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+}
+
+@media all and (max-width: 767px) {
+  .sticky-nav-wrapper {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #ef4444;
+    color: gray;
+    z-index: 5;
+    -webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .sticky-nav-wrapper {
+    color: gray;
+  }
+
+  .sticky-nav li {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .sticky-nav li::after {
+    content: "";
+    position: absolute;
+    height: 60%;
+    background: #fff;
+    width: 1px;
+    right: 0;
+    top: 20%;
+  }
+
+  .sticky-nav li a {
+    color: #fff;
+  }
+
+  .sticky-nav .fa {
+    font-size: 23px;
+  }
+
+  .sticky-nav li span {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+@keyframes phone {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+
+  10%,
+  20% {
+    -webkit-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    -webkit-transform: rotate(8deg);
+    -ms-transform: rotate(8deg);
+    transform: rotate(8deg);
+  }
+
+  40%,
+  60% {
+    -webkit-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+  }
+
+  80% {
+    -webkit-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+  }
+}
+
+.fa-phone.animated,
+.fa-phone.animated-hover:hover,
+.fa-parent.animated-hover:hover>.fa-phone {
+  -webkit-animation: phone 2s linear infinite;
+  -ms-animation: phone 2s linear infinite;
+  animation: phone 2s linear infinite;
+}
+
+.sticky-nav svg {
+  display: inline-block;
 }
