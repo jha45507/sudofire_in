@@ -57,10 +57,10 @@ export default function Home() {
   const [log1, setLog1] = useState(<Image className='w-[165px]' src={whiteLogo} alt='' />)
   const [styling, setStyling] = useState()
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [number, setNumber] = useState('')
-  const [massage, setMassage] = useState('')
+  // const [name, setName] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [number, setNumber] = useState('')
+  // const [massage, setMassage] = useState('')
 
   // const SendMail = async (e) => {
   //     e.preventDefault();
