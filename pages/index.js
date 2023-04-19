@@ -57,6 +57,47 @@ export default function Home() {
   const [log1, setLog1] = useState(<Image className='w-[165px]' src={whiteLogo} alt='' />)
   const [styling, setStyling] = useState()
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [number, setNumber] = useState('')
+  const [massage, setMassage] = useState('')
+
+  // const SendMail = async (e) => {
+  //     e.preventDefault();
+  //     if (!name) {
+  //         alert("please fill name")
+  //         return
+  //     }
+  //     if (!email) {
+  //         alert("please fill email")
+  //         return
+  //     }
+  //     if (!number) {
+  //         alert("please fill number")
+  //         return
+  //     }
+  //     if (name && email && number && !token) {
+  //         alert("please check reCaptcha")
+  //         return
+  //     }
+  //     const response = await fetch(`https://teamage.in/accounts/api/v1/contact_us`, {
+  //         method: 'POST',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({ name, email, number, massage })
+  //     })
+  //     const data = await response.json()
+  //     console.log(data)
+
+  //     setName("")
+  //     setEmail("")
+  //     setNumber("")
+  //     setMassage("")
+
+  //     alert("Saved your information")
+  // }
+
   useEffect(() => {
     let x = window.matchMedia("(max-width: 768px)")
 
@@ -64,7 +105,7 @@ export default function Home() {
       setStyling({
         backgroundImage: `url(${banner_bg.src})`,
         width: '100vw',
-        height: '100vh',
+        height: '75vh',
         backgroundPosition: 'center top',
         backgroundSize: 'auto',
         transition: 'all 0.3s',
@@ -100,7 +141,7 @@ export default function Home() {
           setStyling({
             backgroundImage: `url(${banner_bg.src})`,
             width: '100vw',
-            height: '100vh',
+            height: '75vh',
             backgroundPosition: 'center top',
             backgroundSize: 'auto',
             transition: 'all 0.3s',
@@ -137,7 +178,7 @@ export default function Home() {
           setStyling({
             backgroundImage: `url(${banner_bg.src})`,
             width: '100vw',
-            height: '100vh',
+            height: '75vh',
             backgroundPosition: 'center top',
             backgroundSize: 'auto',
             transition: 'all 0.3s',
