@@ -98,8 +98,8 @@ export default function Home() {
   //     alert("Saved your information")
   // }
 
-  // const ham = createRef()
-  // const cross = createRef()
+  const ham = createRef()
+  const cross = createRef()
 
   // const hamClick = React.forwardRef((props, ham) => {
   //   if (ham.current.classList.contains('hamBar')) {
@@ -114,6 +114,14 @@ export default function Home() {
   //     cross.current.classList.add('hidden')
   //   }
   // })
+
+  const hamClick = () => {
+
+  } 
+
+  const crossClick = () => {
+
+  }
 
   useEffect(() => {
     let x = window.matchMedia("(max-width: 768px)")
