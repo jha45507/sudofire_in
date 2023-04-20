@@ -32,6 +32,7 @@ import nrdc2 from '../public/images/clients/nrdc.jpg'
 import air1 from '../public/images/projects/air.jpg'
 import air2 from '../public/images/clients/air.png'
 
+import { TbArrowBearRight } from "react-icons/tb";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { AiOutlineTwitter } from "react-icons/ai";
@@ -40,7 +41,6 @@ import { FaMobileAlt } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
 import { FcSmartphoneTablet } from "react-icons/fc";
 import { AiOutlineDesktop } from "react-icons/ai";
-// import { BsGraphUpArrow } from "react-icons/bs";
 import { DiResponsive } from "react-icons/di";
 import { ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
@@ -295,7 +295,7 @@ export default function Home() {
               <p className='text-xs md:text-base'>We create amazing SEO friendly website in no time. Our in-house framework has enabled our developers to be more efficient with their coding skills. Get dynamic Business Websites, Ecommerce websites and Web Portals.</p>
             </div>
             <div className='text-white text-center flex flex-col items-center lg:w-[30%] w-[100%]'>
-              {/* <BsGraphUpArrow className='md:text-[100px] text-[60px]' /> */}
+              <TbArrowBearRight className='md:text-[100px] text-[60px]' />
               <h2 className='my-4 font-bold text-xs md:text-base'>INTERNET OF THINGS (IOT)</h2>
               <p className='text-xs md:text-base'>Building smart cities & smarter homes with WiFi devices for industrial & manufactural insights.</p>
             </div>
@@ -312,7 +312,7 @@ export default function Home() {
               <p className='text-xs md:text-base'>Enabling business to conquer physical boundaries with new age Technologies.</p>
             </div>
             <div className='text-white text-center flex flex-col items-center lg:w-[30%] w-[100%]'>
-              <FcSmartphoneTablet className='md:text-[100px] text-[60px]' />
+              <DiResponsive className='md:text-[100px] text-[60px]' />
               <h2 className='my-4 font-bold text-xs md:text-base'>SAAS & MOBILITY SOLUTIONS</h2>
               <p className='text-xs md:text-base'>On the go solutions for routine business processes enabling remote and in-office management.</p>
             </div>
