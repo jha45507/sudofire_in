@@ -1,7 +1,6 @@
+import React, { useRef } from 'react'
 import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-// const inter = Inter({ subsets: ['latin'] })
-
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css/effect-fade";
@@ -41,15 +40,12 @@ import { FaMobileAlt } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
 import { FcSmartphoneTablet } from "react-icons/fc";
 import { AiOutlineDesktop } from "react-icons/ai";
-import { BsGraphUpArrow } from "react-icons/bs";
+// import { BsGraphUpArrow } from "react-icons/bs";
 import { DiResponsive } from "react-icons/di";
 import { ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-
-import { forwardRef, useEffect, useState, createRef } from 'react';
-import React from 'react';
 
 export default function Home() {
   const [navColor, setNavColor] = useState({ color: '#FFFFFF', })
@@ -57,75 +53,61 @@ export default function Home() {
   const [log1, setLog1] = useState(<Image className='w-[165px]' src={whiteLogo} alt='' />)
   const [styling, setStyling] = useState()
 
-  // const [name, setName] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [number, setNumber] = useState('')
-  // const [massage, setMassage] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [number, setNumber] = useState('')
+  const [massage, setMassage] = useState('')
 
-  // const SendMail = async (e) => {
-  //     e.preventDefault();
-  //     if (!name) {
-  //         alert("please fill name")
-  //         return
-  //     }
-  //     if (!email) {
-  //         alert("please fill email")
-  //         return
-  //     }
-  //     if (!number) {
-  //         alert("please fill number")
-  //         return
-  //     }
-  //     if (name && email && number && !token) {
-  //         alert("please check reCaptcha")
-  //         return
-  //     }
-  //     const response = await fetch(`https://teamage.in/accounts/api/v1/contact_us`, {
-  //         method: 'POST',
-  //         headers: {
-  //             'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify({ name, email, number, massage })
-  //     })
-  //     const data = await response.json()
-  //     console.log(data)
+  const SendMail = async (e) => {
+    e.preventDefault();
+    if (!name) {
+      alert("please fill name")
+      return
+    }
+    if (!email) {
+      alert("please fill email")
+      return
+    }
+    if (!number) {
+      alert("please fill number")
+      return
+    }
+    const response = await fetch(`https://teamage.sudofire.com/accounts/api/v1/contact_us`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, number, massage })
+    })
+    const data = await response.json()
 
-  //     setName("")
-  //     setEmail("")
-  //     setNumber("")
-  //     setMassage("")
-
-  //     alert("Saved your information")
-  // }
-
-  const ham = createRef()
-  const cross = createRef()
-
-  // const hamClick = React.forwardRef((props, ham) => {
-  //   if (ham.current.classList.contains('hamBar')) {
-  //     cross.current.classList.replace('hidden', 'show')
-  //     ham.current.classList.add('hidden')
-  //   }
-  // })
-
-  // const crossClick = React.forwardRef((props, cross) => {
-  //   if (ham.current.classList.contains('hamBar')) {
-  //     ham.current.classList.replace('hidden', 'show')
-  //     cross.current.classList.add('hidden')
-  //   }
-  // })
-
-  const hamClick = () => {
-
-  } 
-
-  const crossClick = () => {
+    setName("")
+    setEmail("")
+    setNumber("")
+    setMassage("")
 
   }
 
   useEffect(() => {
-    let x = window.matchMedia("(max-width: 768px)")
+    // let hamBar = document.querySelector(".hamBar")
+    // hamBar.addEventListener("click", () => {
+    //   if (document.querySelector(".crossBar").style.display === 'none') {
 
+    //     document.querySelector(".hamBar").style.display = 'none';
+    //     document.querySelector(".crossBar").style.display = 'block';
+    //     document.querySelector(".navbar_navigation_color").style.display = 'block';
+    //     document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
+
+    //   }
+    //   else {
+    //     document.querySelector(".hamBar").style.display = 'block';
+    //     document.querySelector(".crossBar").style.display = 'none';
+    //     document.querySelector(".navbar_navigation_color").style.display = 'none';
+    //     document.querySelector(".navbar_navigation_color").style.background = 'transparent';
+    //   }
+    // })
+
+    let x = window.matchMedia("(max-width: 768px)")
     if (x.matches) {
       setStyling({
         backgroundImage: `url(${banner_bg.src})`,
@@ -141,7 +123,7 @@ export default function Home() {
       setStyling({
         backgroundImage: `url(${banner_bg.src})`,
         width: '100vw',
-        height: '100vh',
+        height: '94vh',
         backgroundPosition: 'center top',
         backgroundSize: '105%',
         transition: 'all 0.3s',
@@ -149,6 +131,14 @@ export default function Home() {
       })
     }
     window.addEventListener("scroll", () => {
+      if (window.scrollY > 750 && window.scrollY < 1900) {
+        document.querySelector(".contact_box").style.visibility = 'hidden';
+        document.querySelector(".contact_box").style.transition = 'all 0.3s';
+      }
+      else {
+        document.querySelector(".contact_box").style.visibility = 'visible';
+        document.querySelector(".contact_box").style.transition = 'all 0.3s';
+      }
       if (window.scrollY > 10) {
         document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
         document.querySelector(".navbar_navigation_color").style.padding = '5px 80px';
@@ -177,12 +167,18 @@ export default function Home() {
           setStyling({
             backgroundImage: `url(${banner_bg.src})`,
             width: '100vw',
-            height: '100vh',
+            height: '94vh',
             backgroundPosition: 'center top',
             backgroundSize: '115%',
             transition: 'all 0.3s',
             backgroundRepeat: 'no-repeat'
           })
+        }
+        if (x.matches) {
+          document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
+        }
+        else {
+          document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
         }
       }
       else {
@@ -214,7 +210,7 @@ export default function Home() {
           setStyling({
             backgroundImage: `url(${banner_bg.src})`,
             width: '100vw',
-            height: '100vh',
+            height: '94vh',
             backgroundPosition: 'center top',
             backgroundSize: '105%',
             transition: 'all 0.3s',
@@ -222,16 +218,35 @@ export default function Home() {
           })
         }
       }
-
-      if (window.scrollY > 750 && window.scrollY < 1900) {
-        document.querySelector(".contact_box").style.visibility = 'hidden';
-        document.querySelector(".contact_box").style.transition = 'all 0.3s';
-      } else {
-        document.querySelector(".contact_box").style.visibility = 'visible';
-        document.querySelector(".contact_box").style.transition = 'all 0.3s';
-      }
     });
   }, [])
+
+  const hamRef = useRef()
+
+  const crossRef = useRef()
+
+  const phoneView = useRef()
+
+  const hamClick = () => {
+    if (hamRef.current.classList.contains('show')) {
+      crossRef.current.classList.replace('hidden', 'show')
+      hamRef.current.classList.replace('show', 'hidden')
+      phoneView.current.classList.replace('hidden', 'show')
+    }
+  }
+  const crossClick = () => {
+    if (crossRef.current.classList.contains('show')) {
+      hamRef.current.classList.replace('hidden', 'show')
+      crossRef.current.classList.replace('show', 'hidden')
+      phoneView.current.classList.replace('show', 'hidden')
+    }
+  }
+
+  const navbar_close = () => {
+    phoneView.current.classList.replace('show', 'hidden')
+    crossRef.current.classList.replace('show', 'hidden')
+    hamRef.current.classList.replace('hidden', 'show')
+  }
 
   return (
     <div className='relative h-full w-full'>
@@ -241,23 +256,31 @@ export default function Home() {
             {log1}
           </div>
           <div className='z-50'>
-            <div onClick={hamClick}>
-              <FaBars ref={ham} className='text-3xl text-red-500 hamBar' />
+            <div ref={hamRef} className='show'>
+              <FaBars onClick={hamClick} className='text-3xl text-red-500' />
             </div>
-            <div onClick={crossClick}>
-              <RxCross1 ref={cross} className='hidden text-3xl text-red-500 crossBar' />
+            <div ref={crossRef} className='hidden'>
+              <RxCross1 onClick={crossClick} className='text-3xl text-red-500 z-50 opacity-100' />
             </div>
           </div>
+        </div>
+        <div ref={phoneView} className='hidden opacity-90 h-full w-full lg:hidden fixed z-40 top-0 bg-black '>
+          <ul className='text-center mt-[200px]'>
+            <li><a onClick={navbar_close} className='navbarLink-line font-bold' style={navColor} href="#services">OUR SERVICES</a></li>
+            <li><a onClick={navbar_close} className='navbarLink-line font-bold' style={navColor} href="#clients">OUR WORK</a></li>
+            <li><a onClick={navbar_close} className='navbarLink-line font-bold' style={navColor} href="#testimonials">TESTIMONIALS</a></li>
+            <li><a onClick={navbar_close} className='navbarLink-line font-bold' style={navColor} href="#phone_contact">CONTACT US</a></li>
+          </ul>
         </div>
         <nav className='hidden lg:flex w-full fixed top-0 z-20 justify-between items-center py-5 px-20 navbar_navigation_color h-full lg:h-auto opacity-90 lg:opacity-100'>
           <div className='logo_div hidden lg:block'>
             {log}
           </div>
-          <ul className='flex items-center lg:space-x-12 lg:mt-0 mt-[200px]  space-x-0 text-sm font-bold lg:flex-row flex-col w-full lg:w-auto'>
-            <li><a className='navbarLink-line' style={navColor} href="">OUR SERVICES</a></li>
-            <li><a className='navbarLink-line' style={navColor} href="">OUR WORK</a></li>
-            <li><a className='navbarLink-line' style={navColor} href="">TESTIMONIALS</a></li>
-            <li><a className='navbarLink-line' style={navColor} href="">CONTACT US</a></li>
+          <ul className='flex items-center lg:space-x-12 lg:mt-0 mt-[200px] space-x-0 text-sm font-bold lg:flex-row flex-col w-full lg:w-auto'>
+            <li><a className='navbarLink-line' style={navColor} href="#services">OUR SERVICES</a></li>
+            <li><a className='navbarLink-line' style={navColor} href="#clients">OUR WORK</a></li>
+            <li><a className='navbarLink-line' style={navColor} href="#testimonials">TESTIMONIALS</a></li>
+            <li><a className='navbarLink-line' style={navColor} href="#contact_us">CONTACT US</a></li>
           </ul>
           <div className='absolute w-full h-[1px] right-0 bottom-0 bg-gray-700 hidden lg:block'></div>
         </nav>
@@ -265,20 +288,18 @@ export default function Home() {
           <h1 className='md:text-[26px] text-[22px] font-bold leading-none'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE &apos;STARTUP INDIA ACTION PLAN&apos;</h1>
           <p className='lg:text-[22px] text-sm font-light mt-3'>Our services are a perfect mix of creativity commitment and some serious programming. Let your online presence be worthwhile!</p>
         </div>
-        <div className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
-          <div className='space-y-2'>
-            <form action="">
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
-              <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
-              <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
-            </form>
-          </div>
+        <div id="contact_us" className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
+          <form action="" onSubmit={SendMail} method="post" id="contact-form" className='space-y-2'>
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' required value={name} onChange={(e) => setName(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' value={number} required onChange={(e) => setNumber(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' value={email} required onChange={(e) => setEmail(e.target.value)} />
+            <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry' value={massage} onChange={(e) => setMassage(e.target.value)} ></textarea>
+            <button type="submit" onClick={SendMail} className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+          </form>
         </div>
       </header>
 
-      <div className=''>
+      <div id='services' className=''>
         <div className='bg-red-500 w-full py-20 space-y-10'>
           <div className='lg:w-[70%] w-full flex justify-evenly items-start flex-col lg:flex-row space-y-10 lg:space-y-0 px-4 lg:px-0'>
             <div className='text-white text-center flex flex-col items-center lg:w-[30%] w-[100%]'>
@@ -292,7 +313,7 @@ export default function Home() {
               <p className='text-xs md:text-base'>We create amazing SEO friendly website in no time. Our in-house framework has enabled our developers to be more efficient with their coding skills. Get dynamic Business Websites, Ecommerce websites and Web Portals.</p>
             </div>
             <div className='text-white text-center flex flex-col items-center lg:w-[30%] w-[100%]'>
-              <BsGraphUpArrow className='md:text-[100px] text-[60px]' />
+              {/* <BsGraphUpArrow className='md:text-[100px] text-[60px]' /> */}
               <h2 className='my-4 font-bold text-xs md:text-base'>INTERNET OF THINGS (IOT)</h2>
               <p className='text-xs md:text-base'>Building smart cities & smarter homes with WiFi devices for industrial & manufactural insights.</p>
             </div>
@@ -317,7 +338,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="" className="works section">
+      <div id="clients" className="works section">
         <div className="">
           <div className="flex flex-wrap justify-evenly">
             <div className="work">
@@ -412,7 +433,7 @@ export default function Home() {
         </div>
       </div>
 
-      <testimonials className="">
+      <testimonials id="testimonials" className="">
         <div className="relative w-full bg-red-500">
           <div className='lg:w-[65%] w-full flex justify-center items-center relative h-[400px]'>
             <Image className='absolute top-5 lg:left-12 left-0 w-20' src={before_quote} alt='' />
@@ -485,25 +506,23 @@ export default function Home() {
             <div>
               <h2 className='mt-8 mb-6 font-bold'>SHARE</h2>
               <div className='flex justify-center items-center space-x-5'>
-                <a className='text-3xl' href=""><FaFacebookF /></a>
-                <a className='text-3xl' href=""><FaLinkedinIn /></a>
-                <a className='text-3xl' href=""><AiOutlineTwitter /></a>
+                <a className='text-3xl' href="https://www.facebook.com/sudofire/"><FaFacebookF /></a>
+                <a className='text-3xl' href="https://www.linkedin.com/company/sudofire-technologies/"><FaLinkedinIn /></a>
+                <a className='text-3xl' href="https://twitter.com/sudofire/"><AiOutlineTwitter /></a>
               </div>
             </div>
           </div>
         </div>
       </footer>
       <div className='bg-red-500 w-full pb-7 lg:hidden block'>
-        <div className='w-[90%] contactBox bg-black p-7 m-auto'>
-          <div className='space-y-2'>
-            <form action="">
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' />
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' />
-              <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' />
-              <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry'></textarea>
-              <button className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
-            </form>
-          </div>
+        <div className='w-[90%] contactBox bg-black p-7 m-auto' id='phone_contact'>
+          <form action="" onSubmit={SendMail} method="post" id="contact-form" className='space-y-2'>
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' required value={name} onChange={(e) => setName(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' value={number} required onChange={(e) => setNumber(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' value={email} required onChange={(e) => setEmail(e.target.value)} />
+            <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry' value={massage} onChange={(e) => setMassage(e.target.value)}></textarea>
+            <button type="submit" onClick={SendMail} className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
+          </form>
         </div>
       </div>
       <div className='py-5 bg-black lg:mb-0 mb-16'>
@@ -512,7 +531,7 @@ export default function Home() {
       <div className="sticky-nav-wrapper lg:hidden">
         <ul className="sticky-nav">
           <li className='flex flex-col items-center'><a href="tel:+919811406941"><ImPhone className='fa fa-phone animated' /><span>Call Now</span></a></li>
-          <li className='flex flex-col items-center'><a href="#contacts"><IoMdMail className='fa' /><span>Drop an Enquiry</span></a></li>
+          <li className='flex flex-col items-center'><a href="#phone_contact"><IoMdMail className='fa' /><span>Drop an Enquiry</span></a></li>
         </ul>
       </div>
     </div>
