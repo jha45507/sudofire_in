@@ -89,24 +89,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // let hamBar = document.querySelector(".hamBar")
-    // hamBar.addEventListener("click", () => {
-    //   if (document.querySelector(".crossBar").style.display === 'none') {
-
-    //     document.querySelector(".hamBar").style.display = 'none';
-    //     document.querySelector(".crossBar").style.display = 'block';
-    //     document.querySelector(".navbar_navigation_color").style.display = 'block';
-    //     document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
-
-    //   }
-    //   else {
-    //     document.querySelector(".hamBar").style.display = 'block';
-    //     document.querySelector(".crossBar").style.display = 'none';
-    //     document.querySelector(".navbar_navigation_color").style.display = 'none';
-    //     document.querySelector(".navbar_navigation_color").style.background = 'transparent';
-    //   }
-    // })
-
     let x = window.matchMedia("(max-width: 768px)")
     if (x.matches) {
       setStyling({
@@ -132,12 +114,12 @@ export default function Home() {
     }
     window.addEventListener("scroll", () => {
       if (window.scrollY > 750 && window.scrollY < 1900) {
-        document.querySelector(".contact_box").style.visibility = 'hidden';
-        document.querySelector(".contact_box").style.transition = 'all 0.3s';
+        document.querySelector(".contact_box").style.opacity = '0';
+        document.querySelector(".contact_box").style.transition = 'all 0.5s';
       }
       else {
-        document.querySelector(".contact_box").style.visibility = 'visible';
-        document.querySelector(".contact_box").style.transition = 'all 0.3s';
+        document.querySelector(".contact_box").style.opacity = '1';
+        document.querySelector(".contact_box").style.transition = 'all 0.5s';
       }
       if (window.scrollY > 10) {
         document.querySelector(".navbar_navigation_color").style.background = '#FFFFFF';
@@ -285,8 +267,8 @@ export default function Home() {
           <div className='absolute w-full h-[1px] right-0 bottom-0 bg-gray-700 hidden lg:block'></div>
         </nav>
         <div className='lg:w-[550px] w-full lg:pt-[300px] pt-[200px] lg:ml-[100px] ml-[0px] lg:px-[0px] px-[20px]'>
-          <h1 className='md:text-[26px] text-[22px] font-bold leading-none'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE &apos;STARTUP INDIA ACTION PLAN&apos;</h1>
-          <p className='lg:text-[22px] text-sm font-light mt-3'>Our services are a perfect mix of creativity commitment and some serious programming. Let your online presence be worthwhile!</p>
+          <h1 className='md:text-[26px] text-[22px] font-bold leading-none text-white'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE &apos;STARTUP INDIA ACTION PLAN&apos;</h1>
+          <p className='lg:text-[22px] text-sm font-light mt-3 text-white'>Our services are a perfect mix of creativity commitment and some serious programming. Let your online presence be worthwhile!</p>
         </div>
         <div id="contact_us" className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
           <form action="" onSubmit={SendMail} method="post" id="contact-form" className='space-y-2'>
@@ -438,7 +420,7 @@ export default function Home() {
           <div className='lg:w-[65%] w-full flex justify-center items-center relative h-[400px]'>
             <Image className='absolute top-5 lg:left-12 left-0 w-20' src={before_quote} alt='' />
             <div>
-              <p className='md:text-[26px] text-lg text-center'>If it looks good, it builds your 1st Impression...<br />
+              <p className='md:text-[26px] text-lg text-center text-white'>If it looks good, it builds your 1st Impression...<br />
                 If it works good, it builds your Efficiency... <br />
                 But with both,<br />
                 that builds your CLIENTELE. <br />
@@ -485,13 +467,13 @@ export default function Home() {
         </div>
       </testimonials>
 
-      <footer className='bg-red-500 pb-8'>
+      <footer className='bg-red-500 pb-8 text-white'>
         <div className="w-full">
           <iframe className='w-full h-[300px]' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.178941246919!2d77.0399849498477!3d28.413856982418682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195d91cd2c7f%3A0x30a225fa7b56b7bd!2sSudofire+Technologies!5e0!3m2!1sen!2sin!4v1523603681652"
             frameBorder="0" allowFullScreen></iframe>
         </div>
         <div className='lg:w-[55%] w-full'>
-          <div className='lg:w-3/4 w-full ml-auto text-center'>
+          <div className='lg:w-3/4 w-full ml-auto text-center text-white'>
             <div>
               <h2 className='mt-8 mb-6 font-bold'>LOCATION</h2>
               <p>Sudofire Technologies, 1st Floor, Landmark Cyberpark, <br />
