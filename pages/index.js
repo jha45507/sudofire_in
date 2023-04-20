@@ -46,6 +46,7 @@ import { ImPhone } from "react-icons/im";
 import { IoMdMail } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
+import Head from 'next/head';
 
 export default function Home() {
   const [navColor, setNavColor] = useState({ color: '#FFFFFF', })
@@ -232,6 +233,11 @@ export default function Home() {
 
   return (
     <div className='relative h-full w-full'>
+      <Head>
+        <title>Sudofire</title>
+        <meta name="title" content="Sudofire" />
+        <link rel="shortcut icon" href="/favicon.png" />
+      </Head>
       <header className='' style={styling}>
         <div className='z-50 fixed top-0 flex justify-between items-center w-full lg:hidden px-4 py-[10px] phone_view_nav'>
           <div>
