@@ -255,3 +255,8 @@ body {
 .sticky-nav svg {
   display: inline-block;
 }
+
+.swiper-pagination-bullet-active{
+  background-color: #ef4444 !important;
+  color: #ef4444 !important;
+}

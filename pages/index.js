@@ -59,6 +59,11 @@ export default function Home() {
   const [number, setNumber] = useState('')
   const [massage, setMassage] = useState('')
 
+  const contact_form = useRef()
+  const mail_send_sms = useRef()
+  const mail_deskTop_send_sms = useRef()
+  const contactForm_div = useRef()
+
   const SendMail = async (e) => {
     e.preventDefault();
     if (!name) {
@@ -87,6 +92,12 @@ export default function Home() {
     setNumber("")
     setMassage("")
 
+    if (response.status == 200) {
+      contact_form.current.classList.replace('show', 'hidden')
+      mail_send_sms.current.classList.replace('hidden', 'show')
+      mail_deskTop_send_sms.current.classList.replace('hidden', 'show')
+      contactForm_div.current.classList.replace('h-[325px]', 'auto')
+    }
   }
 
   useEffect(() => {
@@ -276,14 +287,17 @@ export default function Home() {
           <h1 className='md:text-[26px] text-[22px] font-bold leading-none text-white'>SUDOFIRE IS A STARTUP RECOGNISED UNDER THE &apos;STARTUP INDIA ACTION PLAN&apos;</h1>
           <p className='lg:text-[22px] text-sm font-light mt-3 text-white'>Our services are a perfect mix of creativity commitment and some serious programming. Let your online presence be worthwhile!</p>
         </div>
-        <div id="contact_us" className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
-          <form action="" onSubmit={SendMail} method="post" id="contact-form" className='space-y-2'>
+        <div id="contact_us" ref={contactForm_div} className='contact_box fixed h-[325px] w-[325px] right-[50px] top-[200px] bg-black p-7 contactBox z-10 hidden lg:block'>
+          <form action="" ref={contact_form} onSubmit={SendMail} method="post" id="contact-form" className='space-y-2 show'>
             <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' required value={name} onChange={(e) => setName(e.target.value)} />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' value={number} required onChange={(e) => setNumber(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' minLength={10} maxLength={10} type="text" name="" id="" placeholder='Phone*' min={10} max={10} value={number} required onChange={(e) => setNumber(e.target.value.replace(/[^0-9]/g,''))} />
             <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' value={email} required onChange={(e) => setEmail(e.target.value)} />
             <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry' value={massage} onChange={(e) => setMassage(e.target.value)} ></textarea>
             <button type="submit" onClick={SendMail} className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
           </form>
+          <div ref={mail_deskTop_send_sms} className='text-center text-red-500 hidden m-auto font-bold'>
+            <p className=''>Thanks for your inquiry. We will get back to you shortly.</p>
+          </div>
         </div>
       </header>
 
@@ -438,7 +452,7 @@ export default function Home() {
         <div className='bg-white'>
           <div className='w-[90%] m-auto text-center md:my-[90px] my-6 '>
             <div className='lg:w-[68%] w-full'>
-              <h1 className='md:text-[40px] text-3xl text-red-500 mb-2'>What our Clients say?</h1>
+              <h1 className='md:text-[40px] text-3xl text-red-500 mb-4'>What our Clients say?</h1>
               <Swiper spaceBetween={30} effect={"fade"} pagination={{ clickable: true, }} autoplay={{ delay: 5000, disableOnInteraction: false, }} modules={[Autoplay, Pagination]} className="mySwiper md:h-[250px] h-[200px]">
                 <SwiperSlide>
                   <div className='text-red-500'>
@@ -506,11 +520,14 @@ export default function Home() {
         <div className='w-[90%] contactBox bg-black p-7 m-auto' id='phone_contact'>
           <form action="" onSubmit={SendMail} method="post" id="contact-form" className='space-y-2'>
             <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="text" name="" id="" placeholder='Name*' required value={name} onChange={(e) => setName(e.target.value)} />
-            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="number" name="" id="" placeholder='Phone*' value={number} required onChange={(e) => setNumber(e.target.value)} />
+            <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' minLength={10} maxLength={10} type="text" name="" id="" placeholder='Phone*' min={10} max={10} value={number} required onChange={(e) => setNumber(e.target.value.replace(/[^0-9]/g,''))} />
             <input className='w-full opacity-100 bg-white border-none outline-none h-9 rounded-sm text-black p-3 placeholder:text-black' type="email" name="" id="" placeholder='E-mail*' value={email} required onChange={(e) => setEmail(e.target.value)} />
             <textarea className='w-full opacity-100 bg-white border-none outline-none rounded-sm text-black p-3 placeholder:text-black' name="" id="" placeholder='Clarify Your Enquiry' value={massage} onChange={(e) => setMassage(e.target.value)}></textarea>
             <button type="submit" onClick={SendMail} className='w-full opacity-100 bg-red-500 text-white border-none outline-none h-9 rounded-sm'>Submit</button>
           </form>
+          <div ref={mail_send_sms} className='text-center text-red-500 hidden m-auto font-bold'>
+            <p className=''>Thanks for your inquiry. We will get back to you shortly.</p>
+          </div>
         </div>
       </div>
       <div className='py-5 bg-black lg:mb-0 mb-16'>
