@@ -335,7 +335,7 @@ export default function Home() {
                 <div className="overlay">
                   <div className="overlay-caption flex flex-col items-center">
                     <h5><span className="logo logo-small"> <Image className='' src={air2} alt='' /></span></h5>
-                    <p>Software</p>
+                    <p>Soft ware</p>
                   </div>
                 </div>
               </a>
@@ -357,7 +357,7 @@ export default function Home() {
                 <div className="overlay">
                   <div className="overlay-caption flex flex-col items-center">
                     <h5> <span className="logo"> <Image className='' src={bicycle2} alt='' /></span></h5>
-                    <p>Website & Software</p>
+                    <p>Website & Soft ware</p>
                   </div>
                 </div>
               </a>
@@ -451,7 +451,7 @@ export default function Home() {
                 </SwiperSlide>
                 <SwiperSlide>
                   <div className='text-red-500'>
-                    <p className='md:text-[27px] text-lg'>"Our Software for Managing Vendors and Orders was<br className='hidden md:block' />
+                    <p className='md:text-[27px] text-lg'>"Our Soft ware for Managing Vendors and Orders was<br className='hidden md:block' />
                       brilliantly handled by Sudofire. I would highly<br className='hidden md:block' />
                       recommend them..."</p>
                     <p className='font-bold md:my-8 my-4 md:text-sm text-xs'>-HARSHIT GROVER<br />
