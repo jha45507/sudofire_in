@@ -53,16 +53,37 @@ export default function Home() {
   const [log, setLog] = useState(<Image className='' src={whiteLogo} alt='' />)
   const [log1, setLog1] = useState(<Image className='w-[165px]' src={whiteLogo} alt='' />)
   const [styling, setStyling] = useState()
-
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [number, setNumber] = useState('')
   const [massage, setMassage] = useState('')
-
   const contact_form = useRef()
   const mail_send_sms = useRef()
   const mail_deskTop_send_sms = useRef()
   const contactForm_div = useRef()
+  const hamRef = useRef()
+  const crossRef = useRef()
+  const phoneView = useRef()
+  const hamClick = () => {
+    if (hamRef.current.classList.contains('show')) {
+      crossRef.current.classList.replace('hidden', 'show')
+      hamRef.current.classList.replace('show', 'hidden')
+      phoneView.current.classList.replace('hidden', 'show')
+    }
+  }
+  const crossClick = () => {
+    if (crossRef.current.classList.contains('show')) {
+      hamRef.current.classList.replace('hidden', 'show')
+      crossRef.current.classList.replace('show', 'hidden')
+      phoneView.current.classList.replace('show', 'hidden')
+    }
+  }
+
+  const navbar_close = () => {
+    phoneView.current.classList.replace('show', 'hidden')
+    crossRef.current.classList.replace('show', 'hidden')
+    hamRef.current.classList.replace('hidden', 'show')
+  }
 
   const SendMail = async (e) => {
     e.preventDefault();
@@ -215,33 +236,6 @@ export default function Home() {
     });
   }, [])
 
-  const hamRef = useRef()
-
-  const crossRef = useRef()
-
-  const phoneView = useRef()
-
-  const hamClick = () => {
-    if (hamRef.current.classList.contains('show')) {
-      crossRef.current.classList.replace('hidden', 'show')
-      hamRef.current.classList.replace('show', 'hidden')
-      phoneView.current.classList.replace('hidden', 'show')
-    }
-  }
-  const crossClick = () => {
-    if (crossRef.current.classList.contains('show')) {
-      hamRef.current.classList.replace('hidden', 'show')
-      crossRef.current.classList.replace('show', 'hidden')
-      phoneView.current.classList.replace('show', 'hidden')
-    }
-  }
-
-  const navbar_close = () => {
-    phoneView.current.classList.replace('show', 'hidden')
-    crossRef.current.classList.replace('show', 'hidden')
-    hamRef.current.classList.replace('hidden', 'show')
-  }
-
   return (
     <div className='relative h-full w-full'>
       <Head>
@@ -249,10 +243,12 @@ export default function Home() {
         <meta name="title" content="Sudofire" />
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
-      <header className='' style={styling}>
+      <header className='' style={styling} id='header_sec'>
         <div className='z-50 fixed top-0 flex justify-between items-center w-full lg:hidden px-4 py-[10px] phone_view_nav'>
           <div>
-            {log1}
+            <a href="#header_sec">
+              {log1}
+            </a>
           </div>
           <div className='z-50'>
             <div ref={hamRef} className='show'>
@@ -273,13 +269,15 @@ export default function Home() {
         </div>
         <nav className='hidden lg:flex w-full fixed top-0 z-20 justify-between items-center py-5 px-20 navbar_navigation_color h-full lg:h-auto opacity-90 lg:opacity-100'>
           <div className='logo_div hidden lg:block'>
-            {log}
+            <a href="#header_sec">
+              {log}
+            </a>
           </div>
           <ul className='flex items-center lg:space-x-12 lg:mt-0 mt-[200px] space-x-0 text-sm font-bold lg:flex-row flex-col w-full lg:w-auto'>
             <li><a className='navbarLink-line' style={navColor} href="#services">OUR SERVICES</a></li>
             <li><a className='navbarLink-line' style={navColor} href="#clients">OUR WORK</a></li>
             <li><a className='navbarLink-line' style={navColor} href="#testimonials">TESTIMONIALS</a></li>
-            <li><a className='navbarLink-line' style={navColor} href="#contact_us">CONTACT US</a></li>
+            <li><a className='navbarLink-line' style={navColor} href="#footer">CONTACT US</a></li>
           </ul>
           <div className='absolute w-full h-[1px] right-0 bottom-0 bg-gray-700 hidden lg:block'></div>
         </nav>
@@ -492,14 +490,14 @@ export default function Home() {
           <iframe className='w-full h-[300px]' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.178941246919!2d77.0399849498477!3d28.413856982418682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195d91cd2c7f%3A0x30a225fa7b56b7bd!2sSudofire+Technologies!5e0!3m2!1sen!2sin!4v1523603681652"
             frameBorder="0" allowFullScreen></iframe>
         </div>
-        <div className='lg:w-[55%] w-full'>
+        <div className='lg:w-[55%] w-full' id='footer'>
           <div className='lg:w-3/4 w-full ml-auto text-center text-white'>
             <div>
               <h2 className='mt-8 mb-6 font-bold'>LOCATION</h2>
-              <p>Sudofire Technologies, 1st Floor, Landmark Cyberpark, <br />
-                Sector 67, Gurgaon, India(122018)</p>
-              <p className='font-bold'>+91-9811406941</p>
-              <p className='font-bold'>sales@sudofire.com jobs@sudofire.com</p>
+                <p>Sudofire Technologies, 1st Floor, Landmark Cyberpark, <br />
+                  Sector 67, Gurgaon, India(122018)</p>
+                <p className='font-bold'>+91-9811406941</p>
+              <p className='font-bold'>sales@sudofire.com</p>
             </div>
             <div>
               <h2 className='mt-8 mb-6 font-bold'>ABOUT SUDOFIRE</h2>
